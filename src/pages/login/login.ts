@@ -24,7 +24,7 @@ export class LoginPage  implements OnInit {
     console.log(this.user)
     console.log(this.user.User.token);
     localStorage.setItem('user',this.user.User.token);
-      if (this.user.Message==="Success") {        
+      if (this.user.Message=='Success') {        
         this.nav.setRoot(HomePage);
       } else {
         let alert = this.alertCtrl.create({
