@@ -24,23 +24,7 @@
   <button style="margin: auto;width: 50%;padding: 10px;" id="button" ion-button class="submit-btn" (click)="Merchants();  "  full type="submit" >Merchants</button>
 
   <div  style="margin: auto;width: 50%;padding: 10px;">
-      <!-- <div id="divvv" style="width:30%; height:30% ;margin-left:35%;">
-          <ion-card *ngFor="let merchant of merchants">
-              <img src="{{merchant.logo}}" alt="image not found"/>
-              <ion-card-content>
-                <ion-card-title>
-                   Name:  {{merchant.name}}
-                  </ion-card-title>
-                <p>
-                   Description:  {{merchant.description}}
-                </p>
-                <p>
-                    QR_Code:  {{merchant.qr_code}}
-                </p>
-              </ion-card-content>
-              
-            </ion-card>
-          </div> -->
+     
       <table class="table">
           <tr>
               <th style="display:none;">Name</th>
@@ -73,7 +57,7 @@
         <tr *ngFor="let p of products" >
             <td>{{p.title}}</td>
             <td>{{p.description}}</td>
-            <td><img src="{{p.logo}}"height=100 width=100  alt="Image not Found"></td>
+            <td><img src="{{p.image}}"height=100 width=100  alt="Image not Found"></td>
             <td>{{p.category}}</td>
         </tr>
     </table>
@@ -102,12 +86,6 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script>
-   func(){
-   document.getElementsByID("s").style.display="block";
-   }
-   document.getElementById ("button").addEventListener ("click", func,true);
  
- </script>
    
 </ion-content>
