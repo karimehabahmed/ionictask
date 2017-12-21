@@ -15,7 +15,7 @@ export class AuthProvider {
   url:string='https://demo.paymeapp.co/api/v2/login?';
   constructor(private http: Http){}
   
-  login() {
+  login(credentials) {
   
      
         
@@ -23,8 +23,8 @@ export class AuthProvider {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
     let urlSearchParams = new URLSearchParams();
-    urlSearchParams.append('email', "trialPIN@gmail.com");
-    urlSearchParams.append('password',"0146522653");
+    urlSearchParams.append('email', credentials.email);
+    urlSearchParams.append('password',credentials.password);
     urlSearchParams.append('device_model',"Gt5776");
     urlSearchParams.append('device_token',"a65s4d");
     urlSearchParams.append('device_platform',"Android");

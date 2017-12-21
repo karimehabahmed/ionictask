@@ -15,15 +15,16 @@ export class LoginPage  implements OnInit {
   constructor(private nav: NavController, private auth: AuthProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
   ngOnInit(){
-    this.auth.login().subscribe(allowed => this.user=JSON.parse(JSON.stringify(allowed)));
+    this.auth.login(this.registerCredentials).subscribe(allowed => this.user=JSON.parse(JSON.stringify(allowed)));
+    
   }
   public login() {
     
-     
     
+    console.log(this.user)
     console.log(this.user.User.token);
     localStorage.setItem('user',this.user.User.token);
-      if (this.user.User.isvalidated===1) {        
+      if (this.user.Message==="Success") {        
         this.nav.setRoot(HomePage);
       } else {
         let alert = this.alertCtrl.create({
