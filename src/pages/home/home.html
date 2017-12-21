@@ -19,7 +19,7 @@
       </ion-buttons>
     </ion-navbar>
 </ion-header>  
-<ion-content padding>
+<ion-content style="background-color: lightblue;" padding>
   
   <button style="margin: auto;width: 50%;padding: 10px;" id="button" ion-button class="submit-btn" (click)="Merchants();  "  full type="submit" >Merchants</button>
 
@@ -52,7 +52,7 @@
           <tr *ngFor="let merchant of merchants" >
               <td>{{merchant.name}}</td>
               <td>{{merchant.description}}</td>
-              <td><img src="{{merchant.logo}}"height=100 width=100  alt="Image not Found"></td>
+              <td colspan="8"><img src="{{merchant.logo}}"height=100 width=300  alt="Image not Found"></td>
               <td>{{merchant.qr_code}}</td>
           </tr>
       </table>
