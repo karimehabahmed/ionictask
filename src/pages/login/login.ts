@@ -8,35 +8,49 @@ import { AuthProvider } from '../../providers/auth/auth';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage  implements OnInit {
+export class LoginPage  {
   loading: Loading;
+  
   registerCredentials = { email: '', password: '' };
   user: any=null;
   constructor(private nav: NavController, private auth: AuthProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
-  ngOnInit(){
-    this.auth.login(this.registerCredentials).subscribe(allowed => this.user=JSON.parse(JSON.stringify(allowed)));
-    
-  }
+ 
   public login() {
-    
-    
-    console.log(this.user)
-    console.log(this.user.User.token);
-    localStorage.setItem('user',this.user.User.token);
-      if (this.user.Message=='Success') {        
-        this.nav.setRoot(HomePage);
-      } else {
+    this.showLoading();
+    this.auth.login(this.registerCredentials).subscribe(
+      data => {localStorage.setItem('user',data.User.token);
+        if (data.Message=="Success")
+          this.nav.setRoot(HomePage);
+          else {
+            let alert = this.alertCtrl.create({
+              title: 'Login Failed',
+              subTitle: 'Wrong Credentials',
+              buttons: ['Ok']
+            });
+            alert.present();
+          }
+      },
+      error => {
         let alert = this.alertCtrl.create({
           title: 'Login Failed',
           subTitle: 'Wrong Credentials',
           buttons: ['Ok']
         });
         alert.present();
-      }
+         // this.loading = false;
+      });
+}
+showLoading() {
+  this.loading = this.loadingCtrl.create({
+    content: 'Please wait...',
+    dismissOnPageChange: true
+  });
+  this.loading.present();
+}
       
   }
  
   
  
- }
+ 
